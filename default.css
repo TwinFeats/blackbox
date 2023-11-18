@@ -1,0 +1,191 @@
+@font-face{ 
+    font-family: sanskrit;
+    src: url('fonts/sanskrit.ttf');
+  }
+  
+* {
+    touch-action: none;
+}
+
+html, body {
+    background-color: black;
+    color: white;
+    margin: 0;
+    font-size: 36pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    padding: 1em;
+}
+
+h1 {
+    margin: 0 0 .5em 0;
+    font-family: Gruppo, sans-serif;
+    color: black;
+    text-shadow: .05em .05em .1em yellow;
+    text-align: center;
+    font-size: 48pt;
+}
+
+#game {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    font-size: 18pt;
+}
+
+#gameboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 0;
+    background-color: #000000;
+}
+
+#gameboard > * {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    border: .3em ridge #404040;  
+    padding: .3em;  
+    position: relative;
+}
+
+.border {
+    background-color: #202020;
+}
+
+#options {
+    margin-top: 2em;
+    text-align: center;
+}
+
+#options > * {
+    margin-left: 1ch;
+    margin-right: 1ch;
+    font-size: 1rem;
+}
+
+#options button {
+    border-radius: .5em;
+    padding: 0 .5em;
+}
+
+#solve {
+    background-color: #00ff00;
+    color: black;
+    border-color: #00cc00
+}
+
+.marker::after {
+    background-color: yellow;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: ' ';
+}
+
+.hit {
+    background-color: red;
+}
+
+.reflection {
+    background-color: yellow;
+}
+
+.ray::after {
+    font-family: sanskrit;
+    font-size: calc((100vw / 8) * .6);
+    font-weight: bold;
+    color: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: ' ';
+}
+
+.a::after {
+    content: 'A' !important;
+    color: lightblue;
+}
+
+.b::after {
+    content: 'B' !important;
+    color: lightgreen;
+}
+
+.c::after {
+    content: 'C' !important;
+    color: lightcoral;
+}
+
+.d::after {
+    content: 'D' !important;
+    color: lightpink;
+}
+
+.v::after {
+    content: 'V' !important;
+    color: lightyellow;
+}
+
+.z::after {
+    content: 'Z' !important;
+    color: violet;
+}
+
+.y::after {
+    content: 'Y' !important;
+    color: blue
+}
+
+.s::after {
+    content: 'S' !important;
+    color: green;
+}
+
+.x::after {
+    content: 'X' !important;
+    color: yellowgreen;
+}
+
+.j::after {
+    content: 'J' !important;
+    color: red;
+}
+
+.k::after {
+    content: 'K' !important;
+    color: plum;
+}
+
+.l::after {
+    content: 'L' !important;
+    color: cyan;
+}
+
+.w::after {
+    content: 'W' !important;
+    color: gold;
+}
+
+.n::after {
+    content: 'N' !important;
+    color: skyblue;
+}
+
+.o::after {
+    content: 'O' !important;
+    color: darkorange;
+}
+
+.p::after {
+    content: 'P' !important;
+    color: darkorchid;
+}
