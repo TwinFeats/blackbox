@@ -54,8 +54,11 @@ function newBoard() {
         var r = rnd.intInRange(1, 8);
         var c = rnd.intInRange(1, 8);
         var idx = r*10 + c;
-        // squares[idx].innerHTML = '<span class="ball"></span>';
-        squares[idx].classList.add("ball");
+        if (squares[idx].classList.contains("ball")) {
+            i--;
+        } else {
+            squares[idx].classList.add("ball");
+        }
     }
 }
 
