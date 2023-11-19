@@ -51,6 +51,22 @@ h1 {
     position: relative;
 }
 
+#gameboard.win > * {
+    background-color: yellow;
+}
+
+#gameboard.win .marker::after {
+    background-color: black;
+}
+
+#gameboard.bad > * {
+    background-color: red;
+}
+
+#gameboard.bad .marker::after {
+    background-color: black;
+}
+
 .border {
     background-color: #202020;
 }
@@ -83,7 +99,7 @@ h1 {
     display: inline-block;
     position: absolute;
     aspect-ratio: 1 / 1;
-    width: 60%;
+    width: 90%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

@@ -39,11 +39,11 @@ function newBoard() {
     for (var r=0;r<10;r++) {
         for (var c=0;c<10;c++) {
             if ((r == 0 && c == 0) || (r == 0 && c == 9) || (c == 0 && r == 9) || (c == 9 && r == 9)) {
-                html += `<div id="rc${r}${c}"><span></span></div>`;
+                html += `<div id="rc${r}${c}"></div>`;
             } else if (r == 0 || r == 9 || c == 0 || c == 9) {
-                html += `<div class="border" id="rc${r}${c}" onpointerdown="ray(event)"><span></span></div>`;
+                html += `<div class="border" id="rc${r}${c}" onpointerdown="ray(event)"></div>`;
             } else {
-                html += `<div id="rc${r}${c}" onpointerdown="mark(event)"><span></span></div>`;
+                html += `<div id="rc${r}${c}" onpointerdown="mark(event)"></div>`;
             }
         }
     }
@@ -54,7 +54,8 @@ function newBoard() {
         var r = rnd.intInRange(1, 8);
         var c = rnd.intInRange(1, 8);
         var idx = r*10 + c;
-        squares[idx].innerHTML = '<span class="marker ball"></span>';
+        // squares[idx].innerHTML = '<span class="ball"></span>';
+        squares[idx].classList.add("ball");
     }
 }
 
@@ -86,7 +87,6 @@ function trackRay(target, startId) {
     var nr = r;
     var nc = c;
     do {
-        console.log(`${r} ${c}`)
         //probe out one square
         nr = r + dr; 
         nc = c + dc;
@@ -149,7 +149,7 @@ function trackRay(target, startId) {
 }
 
 function checkSquare(r, c) {
-    return document.querySelector(`#rc${r}${c} > .marker`);
+    return document.querySelector(`#rc${r}${c}`).classList.contains("ball");
 }
 
 function mark(event) {
@@ -160,9 +160,45 @@ function mark(event) {
 }
 
 function solve() {
+    var correct = 0;
+    const markers = document.querySelectorAll(".marker");
+    for (var i=0;i<markers.length;i++) {
+        if (markers[i].classList.contains("ball")) {
+            correct++;
+        }
+    }
+    document.getElementById("correct").innerHTML = `${correct} correct`;
+    if (correct == 4) {
+        blink(10, "win");
+        document.getElementById("correct").innerHTML = `You WIN!!!`;
+    } else {
+        blink(10, "bad");
+        turns += 3;
+        document.getElementById("turns").innerHTML = turns;
+}
+}
 
+function blink(count, cssClass) {
+    document.getElementById("gameboard").classList.toggle(cssClass);
+    setTimeout(function() {
+        if (--count > 0) {
+            blink(count, cssClass);
+        }
+    }, 250);
 }
 
 function newGame() {
+    init();
+}
 
+function giveUp() {
+    const markers = document.querySelectorAll(".marker");
+    for (var i=0;i<markers.length;i++) {
+        margers[i].classList.remove("marker");
+    }
+
+    const balls = document.querySelectorAll(".ball");
+    for (var i=0;i<balls.length;i++) {
+        balls[i].classList.add("marker");
+    }
 }
