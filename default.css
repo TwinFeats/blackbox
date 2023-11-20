@@ -252,7 +252,7 @@ figure {
         font-size: 18pt;
     }
 
-    body {
+    body, #rules {
         padding-left: 35%;
         padding-right: 35%;
     }

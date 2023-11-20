@@ -16,11 +16,12 @@ function init(gameseed) {
     document.getElementById("solve").disabled = false;
     document.getElementById("turns").innerHTML = "0";
     board = document.getElementById("gameboard");
+    document.getElementById("correct").innerHTML = ``;
     if (gameseed) {
         seed = gameseed;
         rnd = new Srand(seed);
-        // history.replaceState(null, 'Sankalpa', 'https://www.twinfeats.com/blackbox/?game='+seed);
-        // navigator.clipboard.writeText('https://www.twinfeats.com/blackbox/?game='+seed);
+        history.replaceState(null, 'Sankalpa', 'https://www.twinfeats.com/blackbox/?game='+seed);
+        navigator.clipboard.writeText('https://www.twinfeats.com/blackbox/?game='+seed);
         document.getElementById("game").innerHTML = seed;
 
         newBoard();
