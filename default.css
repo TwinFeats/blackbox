@@ -59,12 +59,53 @@ h1 {
     background-color: black;
 }
 
-#gameboard.bad > * {
+#gameboard.bad .marker::after {
+    background-color: black;
+}
+
+figure {
+    font-size: .8em;
+    text-align: center;
+}
+
+#rules {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    font-size: .8em;
+    padding: 1em;
+    border: 3px solid ridge gray;
+    overflow: auto;
+    background-color: black;
+}
+
+#rules #close {
+    position: fixed;
+    right: 3px;
+    top: 3px;
+    padding: .2em .4em;
+    border-radius: .25em;
+    line-height: 1;
+    color: white;
     background-color: red;
 }
 
-#gameboard.bad .marker::after {
-    background-color: black;
+#rules img {
+    width: 80%;
+}
+
+.show {
+    display: block !important;
+}
+
+.disable {
+    color: gray !important;
+    background-color: black !important;
+    border-color: darkgray !important;
 }
 
 .border {
@@ -77,8 +118,8 @@ h1 {
 }
 
 #options > * {
-    margin-left: 1ch;
-    margin-right: 1ch;
+    margin-left: .5ch;
+    margin-right: .5ch;
     font-size: 1rem;
 }
 
@@ -204,4 +245,19 @@ h1 {
 .p::after {
     content: 'P' !important;
     color: darkorchid;
+}
+
+@media screen and (orientation: landscape) {
+    html, body {
+        font-size: 18pt;
+    }
+
+    body {
+        padding-left: 35%;
+        padding-right: 35%;
+    }
+
+    .ray::after {
+        font-size: calc((30vw / 8) * .6);
+    }
 }

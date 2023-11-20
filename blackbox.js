@@ -6,10 +6,14 @@ var balls = [];
 var markers = ['A', 'B', 'C', 'D', 'V', 'Z', 'Y', 'S', 'X', 'J', 'K', 'L', 'W', 'N', 'O', 'P'];
 var markerIdx = 0;
 var turns = 0;
+var gameOver = false;
 
 function init(gameseed) {
+    gameOver = false;
     markerIdx = 0;
     turns = 0;
+    document.getElementById("solve").classList.remove("disable");
+    document.getElementById("solve").disabled = false;
     document.getElementById("turns").innerHTML = "0";
     board = document.getElementById("gameboard");
     if (gameseed) {
@@ -151,14 +155,24 @@ function trackRay(target, startId) {
     return true;
 }
 
+function help() {
+    document.getElementById("rules").classList.add("show");
+}
+
+function closeHelp() {
+    document.getElementById("rules").classList.remove("show");
+}
+
 function checkSquare(r, c) {
     return document.querySelector(`#rc${r}${c}`).classList.contains("ball");
 }
 
 function mark(event) {
+    if (gameOver) return;
     if (event.target.id.startsWith("rc")) {
         event.preventDefault();
         event.target.classList.toggle("marker");
+        // event.target.classList.toggle("ball");  //remove this!!!!!!!!!!
     }
 }
 
@@ -195,9 +209,12 @@ function newGame() {
 }
 
 function giveUp() {
+    gameOver = true;
+    document.getElementById("solve").classList.add("disable");
+    document.getElementById("solve").disabled = true;
     const markers = document.querySelectorAll(".marker");
     for (var i=0;i<markers.length;i++) {
-        margers[i].classList.remove("marker");
+        markers[i].classList.remove("marker");
     }
 
     const balls = document.querySelectorAll(".ball");
