@@ -171,9 +171,9 @@ function checkSquare(r, c) {
 function mark(event) {
     if (gameOver) return;
     if (event.target.id.startsWith("rc")) {
+        if (document.querySelectorAll(".marker").length >= 4) return;
         event.preventDefault();
         event.target.classList.toggle("marker");
-        // event.target.classList.toggle("ball");  //remove this!!!!!!!!!!
     }
 }
 
