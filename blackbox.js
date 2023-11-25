@@ -20,8 +20,8 @@ function init(gameseed) {
     if (gameseed) {
         seed = gameseed;
         rnd = new Srand(seed);
-        history.replaceState(null, 'Sankalpa', 'https://www.twinfeats.com/blackbox/?game='+seed);
-        navigator.clipboard.writeText('https://www.twinfeats.com/blackbox/?game='+seed);
+        history.replaceState(null, 'Sankalpa', '/blackbox/?game='+seed);
+        navigator.clipboard.writeText('https://kidjuice.com/blackbox/?game='+seed);
         document.getElementById("game").innerHTML = seed;
 
         newBoard();
